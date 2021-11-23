@@ -6,16 +6,14 @@
 /*   By: cboudrin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 10:34:58 by cboudrin          #+#    #+#             */
-/*   Updated: 2021/11/23 10:53:24 by cboudrin         ###   ########.fr       */
+/*   Updated: 2021/11/23 12:53:41 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-void	*ft_memset (void *p, int v, unsigned int s)
+void	*ft_memset (void *p, int v, unsigned int len)
 {
 	unsigned char *i = p;
-	while (s--)
-	{
-		*i++ == (unsigned char)v;
-	}
+	while (len--)
+		*i++ = (unsigned char)v;
 	return (p);
 }
 
