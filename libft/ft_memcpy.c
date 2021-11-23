@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboudrin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 13:57:05 by cboudrin          #+#    #+#             */
-/*   Updated: 2021/11/23 17:23:28 by cboudrin         ###   ########.fr       */
+/*   Created: 2021/11/23 15:12:26 by cboudrin          #+#    #+#             */
+/*   Updated: 2021/11/23 17:23:12 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_bzero(void *s, unsigned int len)
+void	*ft_memcpy(void *dest, const void *src, unsigned int len)
 {
-	int				i;
-	unsigned char	*p;
+	int					i;
+	unsigned char		*dtemp;
+	unsigned const char	*stemp;
 
-	p = s;
+	dtemp = dest;
+	stemp = src;
+	i = 0;
 	while (len--)
 	{
-		p[i] = '\0';
+		dtemp[i] = stemp[i];
 		i++;
 	}
+	dest = dtemp;
+	return (dest);
 }
