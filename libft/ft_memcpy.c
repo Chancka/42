@@ -6,18 +6,21 @@
 /*   By: cboudrin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 15:12:26 by cboudrin          #+#    #+#             */
-/*   Updated: 2021/11/23 17:23:12 by cboudrin         ###   ########.fr       */
+/*   Updated: 2021/11/24 11:12:05 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, unsigned int len)
+void	*ft_memcpy(void *dest, const void *src, size_t len)
 {
-	int					i;
-	unsigned char		*dtemp;
-	unsigned const char	*stemp;
+	int	i;
+	char	*dtemp;
+	char	*stemp;
 
-	dtemp = dest;
-	stemp = src;
+	dtemp = (char *)dest;
+	stemp = (char *)src;
+//	if (!dest && !src)
+//		return (NULL);
 	i = 0;
 	while (len--)
 	{
@@ -27,3 +30,5 @@ void	*ft_memcpy(void *dest, const void *src, unsigned int len)
 	dest = dtemp;
 	return (dest);
 }
+
+

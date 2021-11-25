@@ -6,11 +6,10 @@
 /*   By: cboudrin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 09:38:38 by cboudrin          #+#    #+#             */
-/*   Updated: 2021/11/23 10:09:51 by cboudrin         ###   ########.fr       */
+/*   Updated: 2021/11/24 11:11:28 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-int	ft_isdigit(int c);
-int	ft_isalpha(int c);
+#include "libft.h"
 
 int	ft_isalnum(int c)
 {
