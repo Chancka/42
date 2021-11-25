@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   strncmp.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboudrin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 11:23:06 by cboudrin          #+#    #+#             */
-/*   Updated: 2021/11/24 15:14:03 by cboudrin         ###   ########.fr       */
+/*   Created: 2021/11/25 10:56:25 by cboudrin          #+#    #+#             */
+/*   Updated: 2021/11/25 14:04:39 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-unsigned int	ft_strlcpy(char *dest, const char *src, size_t size)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	unsigned int	i;
-	unsigned int	j;
+	size_t	i;
 
-	i = ft_strlen((char *)src);
-	if (i + 1 < size)
-	{
-		j = -1;
-		while (++j < i + 1)
-			dest[j] = src[j];
-	}
-	else if (size)
-	{
-		j = -1;
-		while (++j < size - 1)
-			dest[j] = src[j];
-		dest[j] = '\0';
-	}
-	return (i);
+	i = 0;
+	if (n == 0)
+		return (0);
+	while (i < n - 1 && s1[i] && s1[i] == s2[i] && s2[i])
+		i++;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

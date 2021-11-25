@@ -6,7 +6,7 @@
 #    By: cboudrin <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/24 09:36:39 by cboudrin          #+#    #+#              #
-#    Updated: 2021/11/24 15:56:36 by cboudrin         ###   ########.fr        #
+#    Updated: 2021/11/25 10:35:31 by cboudrin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ SRCS		= ft_isalpha.c\
 		  ft_strlcat.c\
 		  ft_toupper.c\
 		  ft_tolower.c\
-		  ft_strchr.c
+		  ft_strchr.c\
+		  ft_strncmp.c
 
 OBJS		= ${SRCS:.c=.o}
 

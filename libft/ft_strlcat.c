@@ -13,9 +13,9 @@
 
 unsigned int	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	unsigned int i;
-	unsigned int j;
-	unsigned int k;
+	unsigned int	i;
+	unsigned int	j;
+	unsigned int	k;
 
 	i = 0;
 	while (i < size && dest[i])
@@ -31,9 +31,8 @@ unsigned int	ft_strlcat(char *dest, const char *src, size_t size)
 			dest[k] = src[j];
 			k++;
 		}
-		j++;	
+		j++;
 	}
 	dest[k] = '\0';
 	return (i + j);
 }
-

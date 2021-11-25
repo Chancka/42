@@ -13,14 +13,14 @@
 
 void	*ft_memcpy(void *dest, const void *src, size_t len)
 {
-	int	i;
+	int		i;
 	char	*dtemp;
 	char	*stemp;
 
 	dtemp = (char *)dest;
 	stemp = (char *)src;
-//	if (!dest && !src)
-//		return (NULL);
+	if (!dest && !src)
+		return (NULL);
 	i = 0;
 	while (len--)
 	{
@@ -30,5 +30,3 @@ void	*ft_memcpy(void *dest, const void *src, size_t len)
 	dest = dtemp;
 	return (dest);
 }
-
-

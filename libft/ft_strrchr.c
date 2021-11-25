@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboudrin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 11:23:06 by cboudrin          #+#    #+#             */
-/*   Updated: 2021/11/24 15:14:03 by cboudrin         ###   ########.fr       */
+/*   Created: 2021/11/25 10:54:17 by cboudrin          #+#    #+#             */
+/*   Updated: 2021/11/25 10:54:39 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-unsigned int	ft_strlcpy(char *dest, const char *src, size_t size)
+char	*ft_strrchr(const char *s, int c)
 {
-	unsigned int	i;
-	unsigned int	j;
+	char	*stemp;
+	int		i;
 
-	i = ft_strlen((char *)src);
-	if (i + 1 < size)
+	stemp = 0;
+	i = 0;
+	while (s[i])
 	{
-		j = -1;
-		while (++j < i + 1)
-			dest[j] = src[j];
-	}
-	else if (size)
-	{
-		j = -1;
-		while (++j < size - 1)
-			dest[j] = src[j];
-		dest[j] = '\0';
-	}
-	return (i);
+		if (s[i] == c)
+			stemp = (char *)(s + i);
+		i++;
+	}	
+	if (s[i] == c)
+		stemp = (char *)(s + i);
+	return (stemp);
 }
