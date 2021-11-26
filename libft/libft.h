@@ -6,7 +6,7 @@
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 10:06:35 by cboudrin          #+#    #+#             */
-/*   Updated: 2021/11/26 11:55:13 by cboudrin         ###   ########.fr       */
+/*   Updated: 2021/11/26 15:02:17 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,9 @@ int				ft_atoi(const char *str);
 void			*ft_calloc(size_t count, size_t size);
 
 char			*ft_strdup(const char *s1);
+
+char			*ft_substr(char const *s, unsigned int start, size_t len);
+
+char			*ft_strjoin(char const *s1, char const *s2);
 
 #endif
