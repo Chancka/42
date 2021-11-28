@@ -6,7 +6,7 @@
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 10:06:35 by cboudrin          #+#    #+#             */
-/*   Updated: 2021/11/26 15:02:17 by cboudrin         ###   ########.fr       */
+/*   Updated: 2021/11/28 14:05:23 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,7 @@ char			*ft_strdup(const char *s1);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 
 char			*ft_strjoin(char const *s1, char const *s2);
+
+char			*ft_strtrim(char const *s1, char const *set);
 
 #endif
