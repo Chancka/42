@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 11:27:52 by cboudrin          #+#    #+#             */
-/*   Updated: 2021/11/29 13:26:15 by cboudrin         ###   ########.fr       */
+/*   Created: 2021/11/29 10:12:22 by cboudrin          #+#    #+#             */
+/*   Updated: 2021/11/29 10:13:53 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dest, const char *src, size_t size)
+void	ft_putstr_fd(char *s, int fd)
 {
-	size_t	i;
-	size_t	j;
-	size_t	k;
+	int	i;
 
 	i = 0;
-	while (i < size && dest[i])
-		i++;
-	if (i == size)
-		return (i + ft_strlen((char *)src));
-	j = 0;
-	k = i;
-	while (src[j])
+	while (s[i])
 	{
-		if (j < size - i - 1)
-		{
-			dest[k] = src[j];
-			k++;
-		}
-		j++;
+		ft_putchar_fd(s[i], fd);
+		i++;
 	}
-	dest[k] = '\0';
-	return (i + j);
 }

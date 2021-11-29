@@ -6,7 +6,7 @@
 #    By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/24 09:36:39 by cboudrin          #+#    #+#              #
-#    Updated: 2021/11/29 09:57:09 by cboudrin         ###   ########.fr        #
+#    Updated: 2021/11/29 16:15:59 by cboudrin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,24 @@ SRCS		= ft_isalpha.c\
 		  ft_strtrim.c\
 		  ft_split.c\
 		  ft_itoa.c\
-		  ft_strmapi.c
+		  ft_strmapi.c\
+		  ft_striteri.c\
+		  ft_putchar_fd.c\
+		  ft_putstr_fd.c\
+		  ft_putendl_fd.c\
+		  ft_putnbr_fd.c\
+		  
+BONUS_S		= ft_lstnew.c\
+			ft_lstadd_front.c\
+			ft_lstsize.c\
+			ft_lstlast.c\
+			ft_lstadd_back.c\
+			ft_lstdelone.c\
+			ft_lstclear.c\
+			ft_lstiter.c\
+			ft_lstmap.c
+
+BONUS_O		= ${BONUS_S:.c=.o}
 
 OBJS		= ${SRCS:.c=.o}
 
@@ -49,7 +66,11 @@ CFLAGS		= -Wall -Wextra -Werror
 all:		${NAME}
 
 ${NAME}:	${OBJS}
-			 @ar -rcs $(NAME) $^
+			@ar -rcs $(NAME) $^
+
+bonus:		${NAME} ${BONUS_O}
+			@ar -rcs $(NAME) $^
+
 
 .c.o:
 			gcc ${CFLAGS} -c $< -o ${<:.c=.o}
