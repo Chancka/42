@@ -6,7 +6,7 @@
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 10:06:35 by cboudrin          #+#    #+#             */
-/*   Updated: 2021/11/28 18:40:44 by cboudrin         ###   ########.fr       */
+/*   Updated: 2021/11/29 09:56:57 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,7 @@ char			*ft_strtrim(char const *s1, char const *set);
 char			**ft_split(char const *s, char c);
 
 char			*ft_itoa(int n);
+
+char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
 #endif
