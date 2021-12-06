@@ -6,12 +6,40 @@
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 16:21:50 by cboudrin          #+#    #+#             */
-/*   Updated: 2021/12/06 11:25:20 by cboudrin         ###   ########.fr       */
+/*   Updated: 2021/12/06 13:58:25 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 #include <fcntl.h>
+
+char	*get_line(char *save)
+{
+	char	*str;
+	int		i;
+
+	i = 0;
+	if (!save[i])
+		return (NULL);
+	while (save[i] && save[i] != '\n')
+		i++;
+	str = malloc(sizeof(char) * i + 2);
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (save[i] && save[i] != '\n')
+	{
+		str[i] = save[i];
+		i++;
+	}
+	if (save[i] == '\n')
+	{
+		str[i] = save[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}
 
 char	*get_next_line(int fd)
 {
