@@ -6,7 +6,7 @@
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 12:48:07 by cboudrin          #+#    #+#             */
-/*   Updated: 2021/12/06 13:55:29 by cboudrin         ###   ########.fr       */
+/*   Updated: 2021/12/06 16:58:44 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char	*read_save(int fd, char *save)
 		read_bytes = read(fd, buff, BUFFER_SIZE);
 		if (read_bytes == -1)
 		{
-			free (buff);
+			free(buff);
 			return (NULL);
 		}
 		buff[read_bytes] = '\0';

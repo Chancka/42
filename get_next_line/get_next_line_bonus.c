@@ -6,12 +6,11 @@
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 16:21:50 by cboudrin          #+#    #+#             */
-/*   Updated: 2021/12/06 13:58:25 by cboudrin         ###   ########.fr       */
+/*   Updated: 2021/12/06 17:10:48 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
-#include <fcntl.h>
 
 char	*get_line(char *save)
 {
