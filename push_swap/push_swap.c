@@ -6,7 +6,7 @@
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 12:02:56 by cboudrin          #+#    #+#             */
-/*   Updated: 2022/02/23 15:33:32 by cboudrin         ###   ########.fr       */
+/*   Updated: 2022/02/23 16:06:20 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,8 @@ void	ft_pb(t_stack *stack_a, t_stack *stack_b)
 {
 	if (stack_a->prev == NULL && stack_b->prev == NULL)
 	{
-		stack_b->num = stack_a->num;
+		stack_b->prev = node_init(stack_a->num);
+		stack_b->prev->next = stack_b;
 		stack_a->next->prev = NULL;
 	}
 	else if (stack_a->prev != NULL)
@@ -118,6 +119,7 @@ void	ft_pb(t_stack *stack_a, t_stack *stack_b)
 		ft_pb(stack_a, stack_b);
 	}
 }
+
 
 int main(int argc, char **argv)
 {
@@ -144,6 +146,8 @@ int main(int argc, char **argv)
 		ft_pb(stack_a, stack_b);
 		while (stack_a->prev != NULL)
 	        stack_a = stack_a->prev;
+		while (stack_b->prev != NULL)
+	        stack_b = stack_b->prev;
 		printf("apres : \n%i\n", stack_a->num);
 		while (stack_a->next != NULL)
 		{
