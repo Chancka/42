@@ -6,7 +6,7 @@
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 12:02:56 by cboudrin          #+#    #+#             */
-/*   Updated: 2022/02/23 13:12:34 by cboudrin         ###   ########.fr       */
+/*   Updated: 2022/02/23 14:40:40 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ t_stack	*node_init(int value)
 	node = malloc(sizeof(t_stack));
 	node->num = value;
 	node->next  = NULL;
+	node->prev  = NULL;
 	return (node);
 }
 
@@ -63,6 +64,7 @@ t_stack *node_push(t_stack *root, int next_value)
     while (root->next != NULL)
 		root = root->next;
     root->next = node_init(next_value);
+    root->next->prev = root;
 }
 
 int node_len(t_stack *root)
@@ -83,10 +85,10 @@ void	ft_sa(t_stack *stack_a)
 	t_stack	*temp;
 
 	temp = node_init(stack_a->num);
-	printf("%i\n", temp->num);
-	printf("%i", stack_a->num);
-	// stack_a->num = stack_a->next->num;
-	// stack_a->next->num = temp->num;
+	// printf("%i\n", temp->num);
+	// printf("%i", stack_a->num);
+	stack_a->num = stack_a->next->num;
+	stack_a->next->num = temp->num;
 }
 
 int main(int argc, char **argv)
@@ -98,25 +100,26 @@ int main(int argc, char **argv)
 	i = 0;
 	if (argc == 2)
 	{
-		tab = malloc(sizeof(int **));
+		tab = malloc(sizeof(int) * (len_tab(argv) + 1));
 		tab = split_args(argv);
 		stack_a = node_init(tab[i]);
-		while (i < len_tab(argv))
-		{
-			i++;
+		while (++i < len_tab(argv))
 			node_push(stack_a, tab[i]);
-		}
-		printf("avant %i\n", stack_a->num);
+		printf("avant : \n%i\n", stack_a->num);
     	while (stack_a->next != NULL)
 		{
-			printf("%i\n", stack_a->num);
 	        stack_a = stack_a->next;
+			printf("%i\n", stack_a->num);
 		}
+		while (stack_a->prev != NULL)
+	        stack_a = stack_a->prev;
 		ft_sa(stack_a);
-		// while (stack_a->next != NULL)
-		// {
-		// 	printf("%i\n", stack_a->num);
-	    //     stack_a = stack_a->next;
-		// }
+		printf("apres : \n%i\n", stack_a->num);
+		while (stack_a->next != NULL)
+		{
+	        stack_a = stack_a->next;
+			printf("%i\n", stack_a->num);
+		}
+
 	}
 }
