@@ -6,7 +6,7 @@
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 12:02:56 by cboudrin          #+#    #+#             */
-/*   Updated: 2022/02/24 12:43:36 by cboudrin         ###   ########.fr       */
+/*   Updated: 2022/02/24 15:18:17 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,14 @@ void	ft_sa(t_stack *stack_a)
 {
 	t_stack	*temp;
 
+	if (!stack_a->num)
+		return ;
 	temp = node_init(stack_a->num);
 	if (stack_a->prev == NULL)
 	{
 		stack_a->num = stack_a->next->num;
 		stack_a->next->num = temp->num;
+		ft_printf("sa\n");
 	}
 	else
 	{
@@ -96,16 +99,39 @@ void	ft_sa(t_stack *stack_a)
 			stack_a = stack_a->prev;
 		ft_sa(stack_a);
 	}
-	printf("sa\n");
+}
+
+void	ft_sb(t_stack *stack_a)
+{
+	t_stack	*temp;
+
+	if (!stack_a->num)
+		return ;
+	temp = node_init(stack_a->num);
+	if (stack_a->prev == NULL)
+	{
+		stack_a->num = stack_a->next->num;
+		stack_a->next->num = temp->num;
+		ft_printf("sb\n");
+	}
+	else
+	{
+		while (stack_a->prev != NULL)
+			stack_a = stack_a->prev;
+		ft_sa(stack_a);
+	}
 }
 
 void	ft_pb(t_stack *stack_a, t_stack *stack_b)
 {
+	if (!stack_a->num)
+		return ;
 	if (stack_a->prev == NULL && stack_b->prev == NULL)
 	{
 		stack_b->prev = node_init(stack_a->num);
 		stack_b->prev->next = stack_b;
 		stack_a->next->prev = NULL;
+		ft_printf("pb\n");
 	}
 	else if (stack_a->prev != NULL)
 	{
@@ -119,7 +145,6 @@ void	ft_pb(t_stack *stack_a, t_stack *stack_b)
 			stack_b = stack_b->prev;
 		ft_pb(stack_a, stack_b);
 	}
-	printf("pb\n");
 }
 
 void	ft_ra(t_stack *stack_a)
@@ -138,6 +163,7 @@ void	ft_ra(t_stack *stack_a)
 	stack_a->prev = stack_a_last;
 	stack_a_last->next = stack_a;
 	stack_a->next = NULL;
+	ft_printf("ra\n");
 }
 
 void	ft_rra(t_stack *stack_a)
@@ -156,8 +182,22 @@ void	ft_rra(t_stack *stack_a)
 	stack_a->next = stack_a_last;
 	stack_a_last->prev = stack_a;
 	stack_a->prev = NULL;
+	ft_printf("rra\n");
 }
 
+int	is_sorted(t_stack *stack)
+{
+	while (stack->prev != NULL)
+		stack = stack->prev;
+	while (stack->next != NULL)
+	{
+		if (stack->num < stack->next->num)
+			stack = stack->next;
+		else
+			return (0);
+	}
+	return (1);
+}
 
 int main(int argc, char **argv)
 {
@@ -181,17 +221,22 @@ int main(int argc, char **argv)
 	        stack_a = stack_a->next;
 			printf("%i\n", stack_a->num);
 		}
+		if (!is_sorted(stack_a))
+			printf("oui");
+		ft_ra(stack_a);
 		ft_rra(stack_a);
+		ft_sa(stack_b);
+		ft_pb(stack_a, stack_b);
 		while (stack_a->prev != NULL)
 	        stack_a = stack_a->prev;
-		// while (stack_b->prev != NULL)
-	    //     stack_b = stack_b->prev;
+		while (stack_b->prev != NULL)
+	        stack_b = stack_b->prev;
 		printf("apres : \n%i\n", stack_a->num);
 		while (stack_a->next != NULL)
 		{
 	        stack_a = stack_a->next;
 			printf("%i\n", stack_a->num);
 		}
-		// printf("stack_b : %i", stack_b->num);
+		printf("stack_b : %i", stack_b->num);
 	}
 }
