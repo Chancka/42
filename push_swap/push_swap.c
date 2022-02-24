@@ -6,7 +6,7 @@
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 12:02:56 by cboudrin          #+#    #+#             */
-/*   Updated: 2022/02/23 16:06:20 by cboudrin         ###   ########.fr       */
+/*   Updated: 2022/02/24 12:43:36 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ void	ft_sa(t_stack *stack_a)
 			stack_a = stack_a->prev;
 		ft_sa(stack_a);
 	}
+	printf("sa\n");
 }
 
 void	ft_pb(t_stack *stack_a, t_stack *stack_b)
@@ -118,6 +119,43 @@ void	ft_pb(t_stack *stack_a, t_stack *stack_b)
 			stack_b = stack_b->prev;
 		ft_pb(stack_a, stack_b);
 	}
+	printf("pb\n");
+}
+
+void	ft_ra(t_stack *stack_a)
+{
+	t_stack	*stack_a_last;
+
+	if (stack_a->prev != NULL)
+	{
+		while (stack_a->prev != NULL)
+			stack_a = stack_a->prev;
+	}
+	stack_a->next->prev = NULL;
+	stack_a_last = stack_a;
+	while (stack_a_last->next != NULL)
+        stack_a_last = stack_a_last->next;
+	stack_a->prev = stack_a_last;
+	stack_a_last->next = stack_a;
+	stack_a->next = NULL;
+}
+
+void	ft_rra(t_stack *stack_a)
+{
+	t_stack	*stack_a_last;
+
+	if (stack_a->next != NULL)
+	{
+		while (stack_a->next != NULL)
+			stack_a = stack_a->next;
+	}
+	stack_a->prev->next = NULL;
+	stack_a_last = stack_a;
+	while (stack_a_last->prev != NULL)
+        stack_a_last = stack_a_last->prev;
+	stack_a->next = stack_a_last;
+	stack_a_last->prev = stack_a;
+	stack_a->prev = NULL;
 }
 
 
@@ -143,17 +181,17 @@ int main(int argc, char **argv)
 	        stack_a = stack_a->next;
 			printf("%i\n", stack_a->num);
 		}
-		ft_pb(stack_a, stack_b);
+		ft_rra(stack_a);
 		while (stack_a->prev != NULL)
 	        stack_a = stack_a->prev;
-		while (stack_b->prev != NULL)
-	        stack_b = stack_b->prev;
+		// while (stack_b->prev != NULL)
+	    //     stack_b = stack_b->prev;
 		printf("apres : \n%i\n", stack_a->num);
 		while (stack_a->next != NULL)
 		{
 	        stack_a = stack_a->next;
 			printf("%i\n", stack_a->num);
 		}
-		printf("stack_b : %i", stack_b->num);
+		// printf("stack_b : %i", stack_b->num);
 	}
 }
