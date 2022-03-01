@@ -6,7 +6,7 @@
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 13:51:10 by cboudrin          #+#    #+#             */
-/*   Updated: 2022/02/28 15:48:43 by cboudrin         ###   ########.fr       */
+/*   Updated: 2022/03/01 13:33:13 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,12 @@ void	ft_solve(t_node *stack_a, t_node *stack_b, int argc);
 void	four_solve(t_node *a, t_node *b);
 
 void	three_solve(t_node *list);
+
+int	check_doubles(t_node *a);
+
+void	ft_solve_all(t_node *a, t_node *b);
+
+int	*array_sort(int *tab, int size);
 
 int	is_sorted(t_node *a);
 

@@ -1,20 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 09:36:46 by cboudrin          #+#    #+#             */
-/*   Updated: 2022/03/01 12:20:05 by cboudrin         ###   ########.fr       */
+/*   Created: 2022/03/01 11:49:04 by cboudrin          #+#    #+#             */
+/*   Updated: 2022/03/01 13:33:03 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
 
-int	ft_isdigit(int c)
+int	check_doubles(t_node *a)
 {
-	if (c <= '9' && c >= '0')
-		return (1);
-	else
-		return (0);
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < a->size)
+	{
+		j = i + 1;
+		while (j < a->size)
+		{
+			if (a->tab[i] == a->tab[j])
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }
+

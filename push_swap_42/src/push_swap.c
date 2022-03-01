@@ -6,7 +6,7 @@
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 13:54:38 by cboudrin          #+#    #+#             */
-/*   Updated: 2022/02/28 16:10:43 by cboudrin         ###   ########.fr       */
+/*   Updated: 2022/03/01 13:36:13 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,37 @@ int init(t_node *a, t_node *b, int argc)
 	return (0);
 }
 
-void	insert(t_node *a, char ** argv)
+void	ft_putchar_error(char c)
+{
+	write(2, &c, 1);
+}
+
+void	ft_putstr_error(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		ft_putchar_error(str[i]);
+		i++;
+	}
+}
+
+int	ft_is_digit(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]) && str[i] != '-' && str[i] != '+')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+int	insert(t_node *a, char **argv)
 {
 	int	i;
 	int	j;
@@ -37,10 +67,26 @@ void	insert(t_node *a, char ** argv)
 	j = 1;
 	while (argv[j])
 	{
-		a->tab[i] = ft_atoi(argv[j]);
+		if (ft_is_digit(argv[j]))
+		{
+			if (ft_atoi_l(argv[j]) > 2147483647 || ft_atoi_l(argv[j]) < -2147483648)
+				{
+					free(a->tab);
+					ft_putstr_error("Error\n");
+					return (1);
+				}
+			a->tab[i] = ft_atoi(argv[j]);
+		}
+		else
+		{
+			free(a->tab);
+			ft_putstr_error("Error\n");
+			return (1);
+		}
 		i++;
 		j++;
 	}
+	return (0);
 }
 
 int	is_sorted(t_node *a)
@@ -50,7 +96,6 @@ int	is_sorted(t_node *a)
 	i = 0;
 	while (i < a->size - 1)
 	{
-		printf("[%i] : %i\n", i, a->tab[i]);
 		if (a->tab[i] > a->tab[i + 1])
 			return (0);
 		i++;
@@ -65,13 +110,13 @@ int main(int argc, char **argv)
 
 	if (init(&a, &b, argc))
 		return (0);
-	insert(&a, argv);
-	// ft_printf("a[0] : %i\na[1] : %i\na[2] : %i\n", a.tab[0], a.tab[1], a.tab[2]);
-	// ft_swap_bis(&a);
-	// ft_printf("a[0] : %i\na[1] : %i\na[2] : %i\n", a.tab[0], a.tab[1], a.tab[2]);
-	// ft_reverse_rotate(&a);
-	// ft_printf("a[0] : %i\na[1] : %i\na[2] : %i\n", a.tab[0], a.tab[1], a.tab[2]);
-	ft_solve(&a, &b, argc);
-	if (is_sorted(&a))
-		printf("prout");
+	if (insert(&a, argv) || is_sorted(&a))
+		return (0);
+	if (check_doubles(&a))
+	{
+		free(a.tab);
+		ft_putstr_error("Error\n");
+		return (0);
+	}
+	ft_solve_all(&a, &b);
 }

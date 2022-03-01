@@ -6,7 +6,7 @@
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 10:06:35 by cboudrin          #+#    #+#             */
-/*   Updated: 2022/02/22 13:05:37 by cboudrin         ###   ########.fr       */
+/*   Updated: 2022/03/01 13:35:32 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 
 int		ft_atoi(const char *str);
+
+long	ft_atoi_l(const char *str);
 
 void	*ft_calloc(size_t count, size_t size);
 
