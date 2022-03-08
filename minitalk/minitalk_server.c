@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   minitalk_server.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 16:35:34 by cboudrin          #+#    #+#             */
-/*   Updated: 2022/03/07 16:49:04 by cboudrin         ###   ########.fr       */
+/*   Updated: 2022/03/08 14:00:36 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,21 +36,30 @@ void	trad_char(int num)
 	}
 }
 
+void		print_pid(void)
+{
+	char	*tmp_pid;
+
+	tmp_pid = ft_itoa(getpid());
+	write(1, "pid: ", 5);
+	write(1, tmp_pid, ft_strlen(tmp_pid));
+	write(1, "\n", 1);
+	free(tmp_pid);
+}
+
 int	main(int argc, char **argv)
 {
-	int					pid;
 	struct sigaction	ret;
 
 	(void)argv;
-	pid = getpid();
 	ret.sa_handler = trad_char;
 	if (argc == 1)
 	{
-		ft_printf("PID : %i\n", pid);
+		print_pid();
+		sigaction(SIGUSR1, &ret, 0);
+		sigaction(SIGUSR2, &ret, 0);
 		while (1)
 		{
-			sigaction(SIGUSR2, &ret, 0);
-			sigaction(SIGUSR1, &ret, 0);
 			pause();
 		}
 	}

@@ -1,17 +1,61 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   minitalk_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/07 16:35:57 by cboudrin          #+#    #+#             */
-/*   Updated: 2022/03/07 16:50:44 by cboudrin         ###   ########.fr       */
+/*   Created: 2022/03/08 13:39:32 by cboudrin          #+#    #+#             */
+/*   Updated: 2022/03/08 13:40:33 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-#include <stdio.h>
+
+static long int	ft_ternaire(long int boo, long int rtrue, long int rfalse)
+{
+	if (boo)
+		return (rtrue);
+	else
+		return (rfalse);
+}
+
+char	*ft_itoa(int n)
+{
+	char			*dest;
+	size_t			len;
+	long			nb;
+
+	nb = n;
+	len = ft_ternaire(n > 0, 0, 1);
+	nb = ft_ternaire(nb > 0, nb, -nb);
+	while (n)
+		n = ft_ternaire(len++, n / 10, n / 10);
+	dest = malloc(sizeof(char) * (len + 1));
+	if (!dest)
+		return (0);
+	dest[len--] = '\0';
+	while (nb > 0)
+	{
+		dest[len--] = nb % 10 + '0';
+		nb = nb / 10;
+	}
+	if (len == 0 && dest[1] == '\0')
+		dest[len] = '0';
+	else if (len == 0 && dest[1] != '\0')
+		dest[len] = '-';
+	return (dest);
+}
+
+size_t	ft_strlen(const char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
 
 int	ft_isdigit(int c)
 {
@@ -48,64 +92,4 @@ int	ft_atoi(const char *str)
 	if (neg == 1)
 		return (-nb);
 	return (nb);
-}
-
-
-void	send_char(int pid, unsigned char byte)
-{
-	int	bit;
-
-	bit = 0;
-	if (!byte)
-		return ;
-	while (bit < 8)
-	{
-		if (byte & 128)
-		{
-			kill(pid, SIGUSR2);
-			// printf("1");
-		}
-		else
-		{
-			kill(pid, SIGUSR1);
-			// printf("0");
-		}
-		byte = byte << 1;
-		bit++;
-		usleep(3000);
-	}
-}
-
-void	main_handler(int pid, char *message)
-{
-	while (*message)
-	{
-		send_char(pid, *message);
-		++message;
-	}
-	send_char(pid, *message);
-}
-
-int	main(int ac, char **av)
-{
-	int	pid;
-
-	if (ac > 1 && ac <= 3)
-	{
-		pid = ft_atoi(av[1]);
-		if (pid == 0 || pid < 0)
-		{
-			ft_printf("Invalid PID");
-			exit(EXIT_FAILURE);
-		}
-		else
-		{
-			ft_printf("Le message s'envoie\n");
-			main_handler(pid, av[2]);
-			usleep(1000);
-			ft_printf("Le message est parti\n");
-			exit(EXIT_SUCCESS);
-		}
-	}
-	ft_printf("Pas bon les arguments\n");
 }

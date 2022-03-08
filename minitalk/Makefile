@@ -6,38 +6,40 @@
 #    By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/24 09:36:39 by cboudrin          #+#    #+#              #
-#    Updated: 2022/01/06 15:57:21 by cboudrin         ###   ########.fr        #
+#    Updated: 2022/03/08 13:59:13 by cboudrin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS		= ft_printf.c\
-			ft_print_nbr.c\
-			ft_print_hexa.c\
-			ft_print_ptr.c\
-			ft_print_u.c\
-			ft_putchar.c\
-			ft_print_str.c
+SRC_SERVER = minitalk_server.c minitalk_utils.c
+SRC_CLIENT = minitalk_client.c minitalk_utils.c
 
-OBJS		= ${SRCS:.c=.o}
+NAME_SERVER = server
+NAME_CLIENT = client
 
-NAME		= libftprintf.a
+OBJ_SRV = minitalk_server.o minitalk_utils.o
+OBJ_CLIENT = minitalk_client.o minitalk_utils.o
 
-CFLAGS		= -Wall -Wextra -Werror
+CC = gcc
+CFLAGS = -Wall -Werror -Wextra -I.
 
-all:		${NAME}
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
-${NAME}:	${OBJS}
-			 @ar -rcs $(NAME) $^
+all: $(NAME_CLIENT) $(NAME_SERVER)
 
-.c.o:
-			gcc ${CFLAGS} -c $< -o ${<:.c=.o}
+$(NAME_SERVER): $(OBJ_SRV)
+	$(CC) $(CFLAGS) -o $@ $(OBJ_SRV)
+
+$(NAME_CLIENT): $(OBJ_CLIENT)
+	$(CC) $(CFLAGS) -o $@ $(OBJ_CLIENT)
+
 
 clean:
-			rm -f ${OBJS}
+	rm -f $(OBJ_CLIENT) $(OBJ_SRV)
 
-fclean:		clean
-			rm -f ${NAME}
+fclean:	clean
+	rm -f $(OBJ_CLIENT) $(OBJ_SRV) $(NAME_SERVER) $(NAME_CLIENT)
 
-re:			fclean all
+re: fclean all
 
-.PHONY:		all clean fclean re
+.PHONY: server client all re fclean clean
