@@ -1,0 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/01 14:14:26 by cboudrin          #+#    #+#             */
+/*   Updated: 2021/12/06 13:37:29 by cboudrin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
+
+# include <stdlib.h>
+# include <unistd.h>
+
+char	*get_next_line(int fd);
+size_t	ft_strlen(const char *str);
+char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strchr(char *s, int c);
+char	*read_save(int fd, char *save);
+char	*get_line(char *save);
+char	*new_save(char *save);
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 2
+# endif
+#endif
