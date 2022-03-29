@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
+/*   ft_print_hexa.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/01 14:14:26 by cboudrin          #+#    #+#             */
-/*   Updated: 2022/03/28 14:20:09 by cboudrin         ###   ########.fr       */
+/*   Created: 2022/01/06 15:23:52 by cboudrin          #+#    #+#             */
+/*   Updated: 2022/01/07 10:56:21 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_BONUS_H
-# define GET_NEXT_LINE_BONUS_H
+#include "ft_printf.h"
 
-# include <stdlib.h>
-# include <unistd.h>
+int	ft_print_hexa(va_list args)
+{
+	return (ft_putnbr_base(va_arg(args, unsigned int), "0123456789abcdef"));
+}
 
-char	*get_next_line(int fd);
-size_t	ft_strlen(const char *str);
-char	*read_save(int fd, char *save);
-char	*get_line(char *save);
-char	*new_save(char *save);
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 2
-# endif
-#endif
+int	ft_print_hexa_maj(va_list args)
+{
+	return (ft_putnbr_base(va_arg(args, unsigned int), "0123456789ABCDEF"));
+}

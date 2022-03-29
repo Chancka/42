@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/01 14:14:26 by cboudrin          #+#    #+#             */
-/*   Updated: 2022/03/28 14:20:09 by cboudrin         ###   ########.fr       */
+/*   Created: 2022/03/29 15:25:55 by cboudrin          #+#    #+#             */
+/*   Updated: 2022/03/29 15:43:58 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_BONUS_H
-# define GET_NEXT_LINE_BONUS_H
+#include "../include/so_long.h"
 
-# include <stdlib.h>
-# include <unistd.h>
+void	ft_free_tab(char **tab)
+{
+	int	i;
 
-char	*get_next_line(int fd);
-size_t	ft_strlen(const char *str);
-char	*read_save(int fd, char *save);
-char	*get_line(char *save);
-char	*new_save(char *save);
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 2
-# endif
-#endif
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+}

@@ -1,28 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
+/*   ft_print_u.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/01 14:14:26 by cboudrin          #+#    #+#             */
-/*   Updated: 2022/03/28 14:20:09 by cboudrin         ###   ########.fr       */
+/*   Created: 2022/01/06 15:34:09 by cboudrin          #+#    #+#             */
+/*   Updated: 2022/01/07 10:57:20 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_BONUS_H
-# define GET_NEXT_LINE_BONUS_H
+#include "ft_printf.h"
 
-# include <stdlib.h>
-# include <unistd.h>
+int	ft_putnbr_u(unsigned int nbr)
+{
+	unsigned int	nb;
+	int				count;
 
-char	*get_next_line(int fd);
-size_t	ft_strlen(const char *str);
-char	*read_save(int fd, char *save);
-char	*get_line(char *save);
-char	*new_save(char *save);
+	count = 0;
+	nb = nbr;
+	if (nbr == 0)
+		count++;
+	while (nbr != 0)
+	{
+		count++;
+		nbr = nbr / 10;
+	}
+	if (nb >= 10)
+		ft_putnbr_u(nb / 10);
+	ft_putchar((nb % 10) + '0');
+	return (count);
+}
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 2
-# endif
-#endif
+int	ft_print_u(va_list args)
+{
+	return (ft_putnbr_u(va_arg(args, int)));
+}

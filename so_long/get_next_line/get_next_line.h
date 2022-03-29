@@ -6,7 +6,7 @@
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 14:14:26 by cboudrin          #+#    #+#             */
-/*   Updated: 2021/12/03 14:14:41 by cboudrin         ###   ########.fr       */
+/*   Updated: 2022/03/28 14:20:40 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *str);
-char	*ft_strjoin(char *s1, char *s2);
-char	*ft_strchr(char *s, int c);
 char	*read_save(int fd, char *save);
 char	*get_line(char *save);
 char	*new_save(char *save);
