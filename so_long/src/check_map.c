@@ -6,7 +6,7 @@
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 15:26:44 by cboudrin          #+#    #+#             */
-/*   Updated: 2022/03/29 15:48:33 by cboudrin         ###   ########.fr       */
+/*   Updated: 2022/03/31 18:00:03 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,22 +55,26 @@ int	check_collec(t_vars *vars)
 	return (0);
 }
 
-int	check_player(char **map)
+int	check_player(t_vars *vars)
 {
 	int	i;
-	int	y;
+	int	j;
 	int	player;
 
 	i = 0;
 	player = 0;
-	while (map[i])
+	while (vars->map[i])
 	{
-		y = 0;
-		while (map[i][y])
+		j = 0;
+		while (vars->map[i][j])
 		{
-			if (map[i][y] == 'P')
+			if (vars->map[i][j] == 'P')
+			{
 				player++;
-			y++;
+				vars->player_pos_x = j;
+				vars->player_pos_y = i;
+			}	
+			j++;
 		}
 		i++;
 	}
@@ -82,19 +86,19 @@ int	check_player(char **map)
 int	check_exit(char **map)
 {
 	int	i;
-	int	y;
+	int	j;
 	int	exit;
 
 	i = 0;
 	exit = 0;
 	while (map[i])
 	{
-		y = 0;
-		while (map[i][y])
+		j = 0;
+		while (map[i][j])
 		{
-			if (map[i][y] == 'E')
+			if (map[i][j] == 'E')
 				exit++;
-			y++;
+			j++;
 		}
 		i++;
 	}
@@ -103,14 +107,34 @@ int	check_exit(char **map)
 	return (0);
 }
 
+int	check_wrong_map_char(char **map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] != '1' && map[i][j] != 'C' && map[i][j] != 'P' && map[i][j] != 'E' && map[i][j] != '0' && map[i][j] != '\n')
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
 int	check_map(t_vars *vars)
 {
-	// if (check_size(vars->map) /*|| check_wrong_map_char(str)*/)
-	// {
-	// 	ft_printf("Error \nWrong map size or unknown character\n");
-	// 	ft_free_tab(vars->map);
-	// 	exit(0);
-	// }
+	if (check_wrong_map_char(vars->map))
+	{
+		ft_printf("Error \nUnknown character\n");
+		ft_free_tab(vars->map);
+		exit(0);
+	}
 	if (check_top_botom(vars) || check_line(vars))
 	{
 		ft_printf("Error \nProblem with the parsing of the map.\n");
@@ -124,7 +148,7 @@ int	check_map(t_vars *vars)
 		ft_free_tab(vars->map);
 		exit(0);
 	}
-	if (check_exit(vars->map) || check_player(vars->map))
+	if (check_exit(vars->map) || check_player(vars))
 	{
 		ft_printf("Error \nYou must have only one player and one exit \n");
 		ft_free_tab(vars->map);

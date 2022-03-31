@@ -6,7 +6,7 @@
 #    By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 13:11:03 by cboudrin          #+#    #+#              #
-#    Updated: 2022/03/29 15:53:21 by cboudrin         ###   ########.fr        #
+#    Updated: 2022/03/31 13:01:55 by cboudrin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ CC			=	gcc
 RM			=	rm -f
 
 CFLAGS 		=	-Wall -Werror -Wextra -g
-FLAGS_MLX	=	-I -L -Lincludes -L../mlx -lmlx -lXext -lX11 -lz -lm -fsanitize=address
+FLAGS_MLX	=	-g -I -L -Lincludes -L../mlx -lmlx -lXext -lX11 -lz -lm 
 
 all			:	$(NAME)
 
