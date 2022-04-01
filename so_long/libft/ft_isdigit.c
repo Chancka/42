@@ -6,10 +6,11 @@
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 09:36:46 by cboudrin          #+#    #+#             */
-/*   Updated: 2022/03/01 12:06:22 by cboudrin         ###   ########.fr       */
+/*   Updated: 2022/04/01 14:39:15 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
 int	ft_isdigit(int c)
 {

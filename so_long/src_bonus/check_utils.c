@@ -6,11 +6,11 @@
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 15:27:35 by cboudrin          #+#    #+#             */
-/*   Updated: 2022/04/01 15:37:32 by cboudrin         ###   ########.fr       */
+/*   Updated: 2022/04/01 18:05:27 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/so_long_bonus.h"
 
 int	ft_strstrlen(char **str)
 {

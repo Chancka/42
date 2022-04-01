@@ -1,24 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/29 15:58:10 by cboudrin          #+#    #+#             */
-/*   Updated: 2022/04/01 14:48:26 by cboudrin         ###   ########.fr       */
+/*   Created: 2022/03/26 16:52:13 by cboudrin          #+#    #+#             */
+/*   Updated: 2022/04/01 15:55:04 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/so_long_bonus.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+void	parse_map(char *argv, t_vars *vars)
 {
-	if (!lst)
+	char	*ret;
+	int		i;
+	int		fd;
+	int		size;
+
+	size = largeur(argv);
+	i = 0;
+	fd = open(argv, 0);
+	vars->map = malloc(sizeof(char *) * (size + 1));
+	if (!vars->map)
 		return ;
-	while (lst)
+	ret = get_next_line(fd);
+	while (ret)
 	{
-		f(lst->content);
-		lst = lst->next;
+		vars->map[i] = ret;
+		ret = get_next_line(fd);
+		i++;
 	}
+	vars->map[i] = NULL;
+	free(ret);
+	close(fd);
 }

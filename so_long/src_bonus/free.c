@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/29 15:58:10 by cboudrin          #+#    #+#             */
-/*   Updated: 2022/04/01 14:48:26 by cboudrin         ###   ########.fr       */
+/*   Created: 2022/03/29 15:25:55 by cboudrin          #+#    #+#             */
+/*   Updated: 2022/04/01 15:54:40 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/so_long_bonus.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+void	ft_free_tab(char **tab)
 {
-	if (!lst)
-		return ;
-	while (lst)
+	int	i;
+
+	i = 0;
+	while (tab[i])
 	{
-		f(lst->content);
-		lst = lst->next;
+		free(tab[i]);
+		i++;
 	}
+	free(tab);
 }

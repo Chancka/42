@@ -6,11 +6,11 @@
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 15:26:44 by cboudrin          #+#    #+#             */
-/*   Updated: 2022/04/01 15:01:31 by cboudrin         ###   ########.fr       */
+/*   Updated: 2022/04/01 17:37:21 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/so_long_bonus.h"
 
 int	check_line(t_vars *vars)
 {

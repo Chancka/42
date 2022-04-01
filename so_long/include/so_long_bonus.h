@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/25 16:58:46 by cboudrin          #+#    #+#             */
-/*   Updated: 2022/04/01 15:17:33 by cboudrin         ###   ########.fr       */
+/*   Created: 2022/04/01 15:53:46 by cboudrin          #+#    #+#             */
+/*   Updated: 2022/04/01 17:40:49 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
+#ifndef SO_LONG_BONUS_H
 
-# define SO_LONG_H
+# define SO_LONG_BONUS_H
 
 # include "../mlx/mlx.h"
 # include "../libft/libft.h"
@@ -21,6 +21,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include <time.h>
 
 typedef struct s_data {
 	void	*wall;
@@ -28,6 +29,7 @@ typedef struct s_data {
 	void	*perso;
 	void	*back;
 	void	*exit;
+	void	*start;
 }				t_data;
 
 typedef struct s_vars {
@@ -37,6 +39,8 @@ typedef struct s_vars {
 	char	**map;
 	int		player_pos_x;
 	int		player_pos_y;
+	int		fire_pos_x;
+	int		fire_pos_y;
 	int		collect;
 	int		max_collect;
 	int		move_count;
@@ -54,9 +58,11 @@ void	image_perso(t_vars *vars);
 void	image_back(t_vars *vars);
 void	image_collect(t_vars *vars);
 void	image_exit(t_vars *vars);
+void	image_bonus(t_vars *vars);
 void	img(t_vars *vars);
 void	ft_move_count(t_vars *vars);
 void	destroy_img(t_vars *vars);
 int		check_wrong_map_char(char **map);
 int		ft_isber(char *str);
+
 #endif
