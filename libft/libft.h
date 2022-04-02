@@ -6,7 +6,7 @@
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 10:06:35 by cboudrin          #+#    #+#             */
-/*   Updated: 2022/02/22 13:05:37 by cboudrin         ###   ########.fr       */
+/*   Updated: 2022/04/01 14:41:54 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ typedef struct s_list
 int		ft_isalpha(int c);
 
 int		ft_isdigit(int c);
+
+int		ft_is_digit(char c);
 
 int		ft_isalnum(int c);
 

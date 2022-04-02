@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/29 15:58:10 by cboudrin          #+#    #+#             */
-/*   Updated: 2022/04/01 14:48:26 by cboudrin         ###   ########.fr       */
+/*   Created: 2022/03/01 11:49:04 by cboudrin          #+#    #+#             */
+/*   Updated: 2022/03/02 13:00:55 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+int	check_doubles(t_node *a)
 {
-	if (!lst)
-		return ;
-	while (lst)
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < a->size)
 	{
-		f(lst->content);
-		lst = lst->next;
+		j = i + 1;
+		while (j < a->size)
+		{
+			if (a->tab[i] == a->tab[j])
+				return (1);
+			j++;
+		}
+		i++;
 	}
+	return (0);
 }

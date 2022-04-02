@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_error.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/29 15:58:10 by cboudrin          #+#    #+#             */
-/*   Updated: 2022/04/01 14:48:26 by cboudrin         ###   ########.fr       */
+/*   Created: 2022/03/02 13:16:35 by cboudrin          #+#    #+#             */
+/*   Updated: 2022/03/02 13:21:00 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+void	ft_putchar_error(char c)
 {
-	if (!lst)
-		return ;
-	while (lst)
+	write(2, &c, 1);
+}
+
+void	ft_putstr_error(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
 	{
-		f(lst->content);
-		lst = lst->next;
+		ft_putchar_error(str[i]);
+		i++;
 	}
 }
