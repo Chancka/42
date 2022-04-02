@@ -6,7 +6,7 @@
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 13:58:21 by cboudrin          #+#    #+#             */
-/*   Updated: 2022/04/01 18:04:48 by cboudrin         ###   ########.fr       */
+/*   Updated: 2022/04/02 15:50:01 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,6 @@ void	ft_key_up(t_vars *vars)
 		destroy_img(vars);
 		exit(0);
 	}
-	else if (vars->map[vars->player_pos_y - 1][vars->player_pos_x] == 'F')
-	{
-		vars->move_count++;
-		destroy_img(vars);
-		ft_printf("You loose !\n");
-		exit(0);
-	}
 }
 
 void	ft_key_down(t_vars *vars)
@@ -73,13 +66,6 @@ void	ft_key_down(t_vars *vars)
 	{
 		vars->move_count++;
 		destroy_img(vars);
-		exit(0);
-	}
-	else if (vars->map[vars->player_pos_y + 1][vars->player_pos_x] == 'F')
-	{
-		vars->move_count++;
-		destroy_img(vars);
-		ft_printf("You loose !\n");
 		exit(0);
 	}
 }
@@ -111,13 +97,6 @@ void	ft_key_right(t_vars *vars)
 		destroy_img(vars);
 		exit(0);
 	}
-	else if (vars->map[vars->player_pos_y][vars->player_pos_x + 1] == 'F')
-	{
-		vars->move_count++;
-		destroy_img(vars);
-		ft_printf("You loose !\n");
-		exit(0);
-	}
 }
 
 void	ft_key_left(t_vars *vars)
@@ -147,13 +126,6 @@ void	ft_key_left(t_vars *vars)
 		destroy_img(vars);
 		exit(0);
 	}
-	else if (vars->player_pos_y == vars->fire_pos_y && vars->player_pos_x == vars->fire_pos_x)
-	{
-		vars->move_count++;
-		destroy_img(vars);
-		ft_printf("You loose !\n");
-		exit(0);
-	}
 }
 
 int	ft_key(int keycode, t_vars *vars)
@@ -163,7 +135,7 @@ int	ft_key(int keycode, t_vars *vars)
 		return (0);
 	if (keycode == 65307)
 	{
-		printf("you have closed the window.\n");
+		ft_printf("you have closed the window.\n");
 		destroy_img(vars);
 		exit(0);
 	}

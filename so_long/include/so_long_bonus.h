@@ -6,7 +6,7 @@
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:53:46 by cboudrin          #+#    #+#             */
-/*   Updated: 2022/04/01 17:40:49 by cboudrin         ###   ########.fr       */
+/*   Updated: 2022/04/02 15:43:23 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_data {
 	void	*back;
 	void	*exit;
 	void	*start;
+	void	*option;
 }				t_data;
 
 typedef struct s_vars {
@@ -39,11 +40,10 @@ typedef struct s_vars {
 	char	**map;
 	int		player_pos_x;
 	int		player_pos_y;
-	int		fire_pos_x;
-	int		fire_pos_y;
 	int		collect;
 	int		max_collect;
 	int		move_count;
+	int		option;
 }				t_vars;
 
 int		check_map(t_vars *vars);
@@ -64,5 +64,11 @@ void	ft_move_count(t_vars *vars);
 void	destroy_img(t_vars *vars);
 int		check_wrong_map_char(char **map);
 int		ft_isber(char *str);
+void	ft_img_bonus(t_vars *vars);
+void	ft_img_bonus2(t_vars *vars);
+void	destroy_img(t_vars *vars);
+void	ft_move_count(t_vars *vars);
+int		ft_close_cross(t_vars *vars);
+int		ft_option(int button, int x, int y, t_vars *vars);
 
 #endif

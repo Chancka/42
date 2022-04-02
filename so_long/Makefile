@@ -6,7 +6,7 @@
 #    By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 13:11:03 by cboudrin          #+#    #+#              #
-#    Updated: 2022/04/01 16:22:31 by cboudrin         ###   ########.fr        #
+#    Updated: 2022/04/02 15:42:46 by cboudrin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ BONUS_S 	=	src_bonus/so_long.c src_bonus/check_map.c src_bonus/check_utils.c\
 					src_bonus/free.c src_bonus/ft_img.c src_bonus/ft_img_utils.c\
 					src_bonus/ft_key.c src_bonus/parse_map.c src_bonus/ft_img_bonus.c\
 					get_next_line/get_next_line.c get_next_line/get_next_line_utils.c\
+					src_bonus/so_long2.c\
 
 BONUS_O		=	${BONUS_S:.c=.o}
 

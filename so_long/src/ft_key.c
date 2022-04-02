@@ -6,7 +6,7 @@
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 13:58:21 by cboudrin          #+#    #+#             */
-/*   Updated: 2022/04/01 14:59:27 by cboudrin         ###   ########.fr       */
+/*   Updated: 2022/04/02 15:47:58 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ int	ft_key(int keycode, t_vars *vars)
 		return (0);
 	if (keycode == 65307)
 	{
+		ft_printf("you have closed the window.\n");
 		destroy_img(vars);
 		exit(0);
 	}
