@@ -6,7 +6,7 @@
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/02 15:33:32 by cboudrin          #+#    #+#             */
-/*   Updated: 2022/04/02 15:42:10 by cboudrin         ###   ########.fr       */
+/*   Updated: 2022/04/02 17:03:05 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 void	destroy_img(t_vars *vars)
 {
-	mlx_destroy_image(vars->mlx, vars->data.exit);
+	destroy_img2(vars);
 	mlx_destroy_image(vars->mlx, vars->data.collect);
 	mlx_destroy_image(vars->mlx, vars->data.back);
-	mlx_destroy_image(vars->mlx, vars->data.perso);
-	mlx_destroy_image(vars->mlx, vars->data.wall);
 	mlx_destroy_image(vars->mlx, vars->data.start);
 	mlx_destroy_image(vars->mlx, vars->data.option);
 	mlx_destroy_window(vars->mlx, vars->win);
@@ -61,7 +59,7 @@ int	ft_option(int button, int x, int y, t_vars *vars)
 		{
 			vars->option = 1;
 			ft_img_bonus(vars);
-			image_bonus(vars);
+			image_bonus2(vars);
 			mlx_put_image_to_window(vars->mlx, vars->win, vars->data.option,
 				i - 18, j - 36);
 		}
@@ -69,7 +67,7 @@ int	ft_option(int button, int x, int y, t_vars *vars)
 		{
 			vars->option = 0;
 			ft_img_bonus2(vars);
-			image_bonus(vars);
+			image_bonus2(vars);
 			mlx_put_image_to_window(vars->mlx, vars->win, vars->data.option,
 				i - 18, j - 36);
 		}

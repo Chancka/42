@@ -6,7 +6,7 @@
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:53:46 by cboudrin          #+#    #+#             */
-/*   Updated: 2022/04/02 15:43:23 by cboudrin         ###   ########.fr       */
+/*   Updated: 2022/04/02 17:03:01 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,7 @@ void	destroy_img(t_vars *vars);
 void	ft_move_count(t_vars *vars);
 int		ft_close_cross(t_vars *vars);
 int		ft_option(int button, int x, int y, t_vars *vars);
+void	image_bonus2(t_vars *vars);
+void	destroy_img2(t_vars *vars);
 
 #endif
