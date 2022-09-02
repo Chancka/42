@@ -6,7 +6,7 @@
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 16:04:39 by cboudrin          #+#    #+#             */
-/*   Updated: 2022/06/14 12:52:49 by cboudrin         ###   ########.fr       */
+/*   Updated: 2022/06/20 12:50:17 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef struct		s_philo
+typedef struct s_philo
 {
 	pthread_t		id_thread;
 	int				id;
@@ -33,11 +33,11 @@ typedef struct		s_philo
 	struct s_vars	*vars;
 }					t_philo;
 
-typedef struct		s_vars
+typedef struct s_vars
 {
 	int				nb_philo;
 	int				is_dead;
-	int  			ti_die;
+	int				ti_die;
 	int				ti_eat;
 	int				ti_sleep;
 	int				amount_loop;
@@ -65,5 +65,7 @@ void	think(t_philo *philo);
 int		is_dead(t_philo *philo);
 void	display_message(t_philo *philo, char *message);
 void	ft_usleep(int time, t_philo *philo);
+int		print_and_ret(char *message);
+void	free_philo(t_vars *vars);
 
 #endif

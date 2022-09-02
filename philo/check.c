@@ -6,13 +6,23 @@
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 14:29:19 by cboudrin          #+#    #+#             */
-/*   Updated: 2022/06/07 11:28:04 by cboudrin         ###   ########.fr       */
+/*   Updated: 2022/06/20 12:51:43 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	check_int(char** argv)
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+int	check_int(char **argv)
 {
 	int		i;
 	long	nb;

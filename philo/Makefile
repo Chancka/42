@@ -5,15 +5,15 @@
 #                                                     +:+ +:+         +:+      #
 #    By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/05/04 17:15:05 by marnaudy          #+#    #+#              #
-#    Updated: 2022/06/16 13:36:41 by cboudrin         ###   ########.fr        #
+#    Created: 2022/05/04 17:15:05 by cboudrin          #+#    #+#              #
+#    Updated: 2022/06/20 14:20:10 by cboudrin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME	=	philo
 
-SRCS	=	check.c philo.c init.c routine_utils.c utils.c
+SRCS	=	check.c philo.c init.c routine_utils.c utils.c init2.c free_philo.c
 
 HEADERS	=	philo.h
 

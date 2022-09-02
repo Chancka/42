@@ -6,7 +6,7 @@
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 16:09:00 by cboudrin          #+#    #+#             */
-/*   Updated: 2022/06/16 15:05:38 by cboudrin         ###   ########.fr       */
+/*   Updated: 2022/06/20 12:45:19 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ static int	init_philo(t_vars *vars)
 {
 	int		i;
 
-	i = 0;
+	i = -1;
 	vars->forks = malloc(sizeof(pthread_mutex_t) * vars->nb_philo);
 	if (!vars->forks)
 		return (1);
 	vars->philo = malloc(sizeof(t_philo) * (vars->nb_philo));
 	if (!vars->philo)
 		return (1);
-	while (i < vars->nb_philo)
+	while (++i < vars->nb_philo)
 	{
 		vars->philo[i].id = i + 1;
 		vars->philo[i].is_eating = 0;
@@ -51,21 +51,44 @@ static int	init_philo(t_vars *vars)
 		vars->philo[i].last_eat = 0;
 		vars->philo[i].count = 0;
 		vars->philo[i].soon_dead = vars->ti_die;
-		i++;
 	}
 	if (init_mutex(vars))
 		return (1);
-	i = 0;
-	while (i < vars->nb_philo)
-	{
+	i = -1;
+	while (++i < vars->nb_philo)
 		vars->philo[i].vars = vars;
-		i++;
-	}
 	return (0);
+}
+
+static void	*only_one(void *av)
+{
+	char	**argv;
+
+	argv = (char **)av;
+	printf("%d %d has taken a fork\n", 0, 1);
+	usleep(ft_atoi(argv[2]));
+	printf("%d %d died\n", ft_atoi(argv[2]), 1);
+	return (NULL);
+}
+
+static int	free_and_ret(t_vars *vars)
+{
+	free(vars->forks);
+	return (1);
 }
 
 int	init_vars(t_vars *vars, char **argv)
 {
+	pthread_t	thread;
+
+	if (ft_atoi(argv[1]) == 1)
+	{
+		if (pthread_create(&thread, NULL, &only_one, argv)
+			!= 0)
+			return (1);
+		pthread_join(thread, NULL);
+		return (1);
+	}
 	if (argv[5] == NULL)
 		vars->amount_loop = -1;
 	else
@@ -77,71 +100,6 @@ int	init_vars(t_vars *vars, char **argv)
 	vars->is_dead = 0;
 	vars->start = get_time();
 	if (init_philo(vars))
-	{
-		free(vars->forks);
-		return (1);
-	}
-	return (0);
-}
-
-void	*monitor(void *var_v, int i, int nb_philo_count)
-{
-	t_vars	*vars;
-
-	vars = (t_vars *)var_v;
-	while (1)
-	{
-		i = -1;
-		while (++i < vars->nb_philo)
-		{
-			pthread_mutex_lock(&vars->mutex);
-			if (vars->philo[i].count == vars->amount_loop)
-			{
-				nb_philo_count++;
-				vars->philo[i].count = -1;
-				if (nb_philo_count == vars->nb_philo)
-				{
-					vars->is_dead = 1;
-					return (pthread_mutex_unlock(&vars->mutex), NULL);
-				}
-			}
-			if (kill_philo(&vars->philo[i]))
-				return (NULL);
-			pthread_mutex_unlock(&vars->mutex);
-		}
-		usleep(200);
-	}
-}
-
-int	init_threads(t_vars *vars)
-{
-	int		i;
-	void	*philo;
-
-	i = 0;
-	vars->start = get_time();
-	while (i < vars->nb_philo)
-	{
-		philo = (void *)(&vars->philo[i]);
-		if (i % 2 == 0 && (pthread_create(&vars->philo[i].id_thread, NULL, &routine, philo)) != 0)
-		{
-			printf("Error: pthread_create failed\n");
-			return (1);
-		}
-		i++;
-	}
-	i = 0;
-	usleep(10);
-	while (i < vars->nb_philo)
-	{
-		philo = (void *)(&vars->philo[i]);
-		if (i % 2 == 1 && (pthread_create(&vars->philo[i].id_thread, NULL, &routine, philo)) != 0)
-		{
-			printf("Error: pthread_create failed\n");
-			return (1);
-		}
-		i++;
-	}	
-	monitor(vars, 0, 0);
+		return (free_and_ret(vars));
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 10:21:25 by cboudrin          #+#    #+#             */
-/*   Updated: 2022/06/14 12:54:27 by cboudrin         ###   ########.fr       */
+/*   Updated: 2022/06/20 12:51:37 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,16 +73,6 @@ long	ft_atol(const char *str)
 	if (neg == 1)
 		return (-nb);
 	return (nb);
-}
-
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
 }
 
 int	get_time(void)
