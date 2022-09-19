@@ -6,7 +6,7 @@
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:52:56 by cboudrin          #+#    #+#             */
-/*   Updated: 2022/06/20 12:49:26 by cboudrin         ###   ########.fr       */
+/*   Updated: 2022/09/10 13:18:13 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +83,11 @@ int	main(int argc, char **argv)
 	t_vars	vars;
 
 	if (argc != 5 && argc != 6)
-		return (print_and_ret("Error: wrong number of arguments\n"));
+		return (print_and_ret("Error: wrong number of arguments"));
 	if (check_args(argv))
-		return (print_and_ret("Error: wrong arguments\n"));
+		return (print_and_ret("Error: wrong arguments"));
 	if (pthread_mutex_init(&vars.mutex, NULL))
-		return (print_and_ret("Error: pthread_mutex_init failed\n"));
+		return (print_and_ret("Error: pthread_mutex_init failed"));
 	if (init_vars(&vars, argv))
 		return (1);
 	if (init_threads(&vars))

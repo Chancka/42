@@ -6,7 +6,7 @@
 #    By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 13:11:03 by cboudrin          #+#    #+#              #
-#    Updated: 2022/04/02 15:42:46 by cboudrin         ###   ########.fr        #
+#    Updated: 2022/09/05 15:01:13 by cboudrin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ CC			=	gcc
 RM			=	rm -f
 
 CFLAGS 		=	-Wall -Werror -Wextra -g
-FLAGS_MLX	=	-I -L -Lincludes -L./mlx -lmlx -lXext -lX11 -lz -lm
+FLAGS_MLX	=	-L./mlx -lmlx -lXext -lX11
 
 all			:	$(NAME)
 

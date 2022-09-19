@@ -6,7 +6,7 @@
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 14:29:19 by cboudrin          #+#    #+#             */
-/*   Updated: 2022/06/20 12:51:43 by cboudrin         ###   ########.fr       */
+/*   Updated: 2022/09/10 13:04:59 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,13 @@ int	check_int(char **argv)
 
 int	check_data(char **argv)
 {
-	if (ft_atoi(argv[1]) > 200)
+	if (ft_atoi(argv[1]) > 200 || argv[1] == 0)
 		return (0);
 	if (ft_atoi(argv[2]) < 60)
 		return (0);
 	if (ft_atoi(argv[3]) < 60)
 		return (0);
-	if (ft_atoi(argv[4]) < 60)
+	if (argv[4] && (ft_atoi(argv[4]) < 60 || argv [1] == 0))
 		return (0);
 	return (1);
 }
