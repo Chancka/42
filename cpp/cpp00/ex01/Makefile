@@ -1,27 +1,30 @@
-NAME        = phonebook
+SRCS		=	srcs/Contact.cpp srcs/main.cpp srcs/PhoneBook.cpp
 
-SRCS        = srcs/main.cpp srcs/PhoneBook.cpp srcs/Contact.cpp
+CC			=	c++
 
-OBJS        = ${SRCS:.cpp=.o}
+CPPFLAGS	=	-Wall -Werror -Wextra -std=c++98 -g3
 
-RM          = rm -f
+RM			=	rm -f
 
-CFLAGS      = -Wall -Wextra -Werror -std=c++98
+NAME		=	PhoneBook
 
-COMPILER    = c++
+OBJ			=	$(SRCS:.cpp=.o)
 
-${NAME}: ${OBJS}
-		${COMPILER} ${FLAGS} ${OBJS} -o ${NAME}
+all			:	$(NAME) 
 
-all :   ${NAME}
+%.o : %.cpp
+	$(CC) $(CPPFLAGS) -o $@ -c $< 
 
-clean:
-		${RM} ${OBJS}
+$(NAME)		:	$(OBJ)
+				$(CC) $(CPPFLAGS) $(OBJ) -o $(NAME) 
+		
+clean		:	
+				$(RM) $(OBJ)
 
-fclean: clean
-		${RM} ${NAME}
+fclean		:	clean
+				$(RM) $(NAME)
 
-re:        fclean all
+re			:	fclean
+				$(MAKE)
 
-.PHONY: all clean fclean re
-
+.PHONY		:	clean fclean re all

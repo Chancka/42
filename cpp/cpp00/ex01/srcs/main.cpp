@@ -1,7 +1,14 @@
 #include "../includes/PhoneBook.hpp"
 #include "../includes/Contact.hpp"
 
-int main(int ac, char **av)
+static int stoi(std::string &s)
+{
+    int i;
+    std::istringstream(s) >> i;
+    return i;
+}
+
+int main(void)
 {
 	PhoneBook	phonebook;
 	std::string	input;
@@ -23,8 +30,8 @@ int main(int ac, char **av)
 			phonebook.display_contacts();
 			std::cout << "Enter a number between 1 and 8" << std::endl;
 			std::getline(std::cin, input);
-			if (input != "" && (std::stoi(input) < 9 && std::stoi(input) > 0))
-				phonebook.display_one_contact(std::stoi(input) - 1);
+			if (input != "" && (stoi(input) < 9 && stoi(input) > 0))
+				phonebook.display_one_contact(stoi(input) - 1);
 			else
 				std::cout << "Not a valid argument" << std::endl;
 		}

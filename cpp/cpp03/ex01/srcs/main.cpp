@@ -1,6 +1,6 @@
 #include "../includes/ScavTrap.hpp"
 
-int main(int ac, char **av)
+int main(void)
 {
 	ScavTrap	chancka("Chancka");
 	ScavTrap	test;

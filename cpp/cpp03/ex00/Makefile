@@ -1,27 +1,26 @@
-NAME        = ClapTrap
+NAME		= ClapTrap
 
-SRCS        = srcs/main.cpp srcs/ClapTrap.cpp
+SRCS		= srcs/main.cpp srcs/ClapTrap.cpp
 
-OBJS        = ${SRCS:.cpp=.o}
+OBJS		= ${SRCS:.cpp=.o}
 
-RM          = rm -f
+RM			= rm -f
 
-CFLAGS      = -Wall -Wextra -Werror -std=c++98
+CPPFLAGS	= -Wall -Wextra -Werror -std=c++98
 
-COMPILER    = c++
+COMPILER	= c++
 
-${NAME}: ${OBJS}
-		${COMPILER} ${FLAGS} ${OBJS} -o ${NAME}
+${NAME}:	${OBJS}
+		${COMPILER} ${CPPFLAGS} ${OBJS} -o ${NAME}
 
-all :   ${NAME}
+all:	${NAME}
 
 clean:
 		${RM} ${OBJS}
 
-fclean: clean
+fclean:	clean
 		${RM} ${NAME}
 
-re:        fclean all
+re:		fclean all
 
 .PHONY: all clean fclean re
-

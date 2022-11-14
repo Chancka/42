@@ -5,7 +5,6 @@ Zombie::Zombie()
 	std::cout << "Constructor of Zombie called" << std::endl;
 }
 
-
 Zombie::~Zombie()
 {
 	std::cout << "Destructor of Zombie called" << std::endl;

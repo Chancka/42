@@ -1,6 +1,6 @@
 #include "../includes/FragTrap.hpp"
 
-int main(int ac, char **av)
+int main(void)
 {
 	FragTrap	chancka("Chancka");
 	FragTrap	test(chancka);

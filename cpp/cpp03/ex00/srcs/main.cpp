@@ -1,6 +1,6 @@
 #include "../includes/ClapTrap.hpp"
 
-int main(int ac, char **av)
+int main(void)
 {
 	ClapTrap	chancka("Chancka");
 

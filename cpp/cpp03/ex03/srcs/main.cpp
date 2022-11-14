@@ -1,6 +1,6 @@
 #include "../includes/DiamondTrap.hpp"
 
-int main(int ac, char **av)
+int main(void)
 {
 	DiamondTrap	chancka("Chancka");
 
@@ -10,6 +10,17 @@ int main(int ac, char **av)
 	chancka.guardGate();
 	chancka.highFivesGuys();
 	chancka.whoAmI();
+	chancka.takeDamage(100);
+	
+	DiamondTrap	test;
+
+	test = chancka;
+	test.attack("ennemy");
+	test.takeDamage(10);
+	test.beRepaired(10);
+	test.guardGate();
+	test.highFivesGuys();
+	test.whoAmI();
 
 	return (0);	
 }

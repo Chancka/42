@@ -1,27 +1,56 @@
-NAME        = Harl
+S		= srcs/
 
-SRCS        = srcs/main.cpp srcs/Harl.cpp
+O		= objs/
 
-OBJS        = ${SRCS:.cpp=.o}
+I		= incs/
 
-RM          = rm -f
+D		= deps/
 
-CFLAGS      = -Wall -Wextra -Werror -std=c++98
+NAME	= Harl
 
-COMPILER    = c++
+SRCS	= main.cpp Harl.cpp
 
-${NAME}: ${OBJS}
-		${COMPILER} ${FLAGS} ${OBJS} -o ${NAME}
+CC		= c++
 
-all :   ${NAME}
+CFLAGS	+= -Wall -Wextra -Werror -std=c++98
 
-clean:
-		${RM} ${OBJS}
+CFLAGS	+= -I$I
 
-fclean: clean
-		${RM} ${NAME}
+SRCS	:= $(foreach file,$(SRCS),$S$(file))
+OBJS	= $(SRCS:$S%=$O%.o)
+DEPS	= $(SRCS:$S%=$D%.d)
 
-re:        fclean all
+RM		= /bin/rm -rf
 
 .PHONY: all clean fclean re
 
+all: $(NAME)
+
+$O:
+	@mkdir $@
+
+$(OBJS): | $O
+
+$(OBJS): $O%.o: $S%
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$D:
+	@mkdir $@
+
+$(DEPS): | $D
+
+$(DEPS): $D%.d: $S%
+	@$(CC) $(CFLAGS) -MM -MF $@ -MT "$O$*.o $@" $<
+
+$(NAME): $(OBJS)
+	$(CC) $^ -o $@
+
+clean:
+	$(RM) $D $O
+
+fclean: clean
+	$(RM) $(NAME)
+
+re: fclean all
+
+-include $(DEPS)

@@ -64,7 +64,7 @@ void	Contact::display_contact(void)
 	std::cout << "Darkest secret : " << _secret << std::endl;
 }
 
-void	Contact::print_string(std::string str)
+void	Contact::_print_string(std::string str)
 {
 	std::cout << std::setw(10);
 	if (str.length() > 10)
@@ -74,8 +74,8 @@ void	Contact::print_string(std::string str)
 
 void	Contact::display_identify(void)
 {
-	print_string(this->_first_name);
-	print_string(this->_last_name);
-	print_string(this->_nickname);
+	_print_string(this->_first_name);
+	_print_string(this->_last_name);
+	_print_string(this->_nickname);
 	std::cout << std::endl;
 }

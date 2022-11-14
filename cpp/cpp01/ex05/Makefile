@@ -1,27 +1,26 @@
-NAME        = Harl
+NAME		= Harl
 
-SRCS        = srcs/main.cpp srcs/Harl.cpp
+SRCS		= srcs/main.cpp srcs/Harl.cpp
 
-OBJS        = ${SRCS:.cpp=.o}
+OBJS		= ${SRCS:.cpp=.o}
 
-RM          = rm -f
+RM			= rm -f
 
-CFLAGS      = -Wall -Wextra -Werror -std=c++98
+CPPFLAGS	= -Wall -Wextra -Werror -std=c++98
 
-COMPILER    = c++
+COMPILER	= c++
 
-${NAME}: ${OBJS}
-		${COMPILER} ${FLAGS} ${OBJS} -o ${NAME}
+${NAME}:	${OBJS}
+		${COMPILER} ${CPPFLAGS} ${OBJS} -o ${NAME}
 
-all :   ${NAME}
+all:	${NAME}
 
 clean:
 		${RM} ${OBJS}
 
-fclean: clean
+fclean:	clean
 		${RM} ${NAME}
 
-re:        fclean all
+re:		fclean all
 
 .PHONY: all clean fclean re
-

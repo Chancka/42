@@ -1,6 +1,6 @@
 #include "../includes/Harl.hpp"
 
-int main(int ac, char **av)
+int main(void)
 {
 	Harl		harl;
 	std::string	input;

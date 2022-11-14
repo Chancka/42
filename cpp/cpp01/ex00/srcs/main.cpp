@@ -1,6 +1,6 @@
 #include "../includes/Zombie.hpp"
 
-int main(int ac, char **av)
+int main(void)
 {
 	std::cout << "==========       CONSTRUCTOR      ==========" << std::endl << std::endl;
 	Zombie	zombie_stack("Stackouille");

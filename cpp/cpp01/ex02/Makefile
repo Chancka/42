@@ -6,12 +6,12 @@ OBJS        = ${SRCS:.cpp=.o}
 
 RM          = rm -f
 
-CFLAGS      = -Wall -Wextra -Werror -std=c++98
+CPPFLAGS    = -Wall -Wextra -Werror -std=c++98
 
 COMPILER    = c++
 
 ${NAME}: ${OBJS}
-		${COMPILER} ${FLAGS} ${OBJS} -o ${NAME}
+		${COMPILER} ${CPPFLAGS} ${OBJS} -o ${NAME}
 
 all :   ${NAME}
 

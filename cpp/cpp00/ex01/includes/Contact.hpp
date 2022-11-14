@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include <sstream>
+
 class Contact
 {
 	public:
@@ -19,7 +21,7 @@ class Contact
 
 	private:
 
-	void	print_string(std::string str);
+	void	_print_string(std::string str);
 	std::string	_first_name;
 	std::string	_last_name;
 	std::string	_nickname;

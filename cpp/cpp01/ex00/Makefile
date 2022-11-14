@@ -1,27 +1,30 @@
-NAME        = zombie
+SRCS		=	srcs/main.cpp srcs/Zombie.cpp srcs/newZombie.cpp srcs/randomChump.cpp
 
-SRCS        = srcs/main.cpp srcs/zombie.cpp srcs/newZombie.cpp srcs/randomChump.cpp
+CC			=	c++
 
-OBJS        = ${SRCS:.cpp=.o}
+CPPFLAGS	=	-Wall -Wextra -Werror -std=c++98
 
-RM          = rm -f
+RM			=	rm -f
 
-CFLAGS      = -Wall -Wextra -Werror -std=c++98
+NAME		=	zombie
 
-COMPILER    = c++
+OBJS		=	$(SRCS:.cpp=.o)
 
-${NAME}: ${OBJS}
-		${COMPILER} ${FLAGS} ${OBJS} -o ${NAME}
+all			:   $(NAME)
 
-all :   ${NAME}
+%.o : %.cpp %.hpp
+	$(CC) $(CPPFLAGS) -o $@ -c $< 
 
-clean:
-		${RM} ${OBJS}
+$(NAME)		:	$(OBJS)
+				$(CC) $(CPPFLAGS) $(OBJS) -o $(NAME)
 
-fclean: clean
-		${RM} ${NAME}
+clean		:
+		$(RM) $(OBJS)
 
-re:        fclean all
+fclean		:	clean
+		$(RM) $(NAME)
+
+re			:	fclean all
 
 .PHONY: all clean fclean re
 

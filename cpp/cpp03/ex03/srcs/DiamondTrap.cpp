@@ -15,18 +15,21 @@ DiamondTrap::DiamondTrap(std::string name) : _name(name)
 	ClapTrap::_name = _name + "_clap_name";
 	this->_energy = ScavTrap::_energy;
 	this->_ad = FragTrap::_ad;
-	std::cout << "Default constructor called for DiamondTrap" << std::endl;
+	std::cout << "Constructor with string called for DiamondTrap" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap &other)
+DiamondTrap::DiamondTrap(const DiamondTrap &other) : ClapTrap(other) , ScavTrap(other) , FragTrap(other)
 {
 	std::cout << "Copy constructor called for DiamondTrap" << std::endl;
 	*this = other;
 }
 
-DiamondTrap &DiamondTrap::operator=(const DiamondTrap &other)
+DiamondTrap &DiamondTrap::operator=(DiamondTrap const &other)
 {
 	std::cout << "Assignation constructor called for DiamondTrap" << std::endl;
+	ClapTrap::operator=(other);
+	ScavTrap();
+	FragTrap();
 	return (*this);
 }
 

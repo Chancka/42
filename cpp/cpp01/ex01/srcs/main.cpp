@@ -1,10 +1,10 @@
 #include "../includes/Zombie.hpp"
 
-int main(int ac, char **av)
+int main(void)
 {
-	Zombie *horde = zombieHorde(std::stoi(av[1]), av[2]);
+	Zombie *horde = zombieHorde(3, "test");
 
-	for (int i; i < std::stoi(av[1]); i++)
+	for (int i = 0; i < 3; i++)
 		horde[i].announce();
 	delete [] horde;
 	return (0);	
