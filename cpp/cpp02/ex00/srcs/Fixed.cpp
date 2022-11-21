@@ -24,13 +24,13 @@ Fixed::~Fixed()
 	std::cout << "Destructor of Fixed called" << std::endl;
 }
 
-int	Fixed::getRawBits(void) const
+int	Fixed::getRawBits(void) const // return the value of the fixed point value
 {
 	std::cout << "getRawBits member function called" << std::endl;
 	return (this->_nb_fixed);
 }
 
-void	Fixed::setRawBits(int const raw)
+void	Fixed::setRawBits(int const raw) // set the value of the fixed point value
 {
 	std::cout << "setRawBits member function called" << std::endl;
 	this->_nb_fixed = raw;

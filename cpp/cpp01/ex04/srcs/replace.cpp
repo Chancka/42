@@ -11,7 +11,7 @@ void	replace(std::string filename, std::string s1, std::string s2)
 	name_replace = filename + ".replace";
 	file.open(filename.c_str());
 	fileReplace.open(name_replace.c_str());
-	if (s1 == s2)
+	if (s1 == s2) // if s1 == s2, we don't need to replace
 	{
 		while (std::getline(file, readLine))
 			fileReplace << readLine << std::endl;
@@ -19,13 +19,9 @@ void	replace(std::string filename, std::string s1, std::string s2)
 	}
 	while(std::getline(file, readLine))
 	{
-		found = readLine.find(s1);
-		while (found != std::string::npos)
-		{
-			readLine = readLine.substr(0, found) + s2 + readLine.substr(found + s1.length());
-			found = readLine.find(s1);
-		}
-		fileReplace << readLine << std::endl;
+		while ((found = readLine.find(s1)) != std::string::npos)
+			readLine = readLine.substr(0, found) + s2 + readLine.substr(found + s1.length()); // replace
+		fileReplace << readLine << std::endl; // write in file
 	}
 	file.close();
 	fileReplace.close();

@@ -59,7 +59,7 @@ void	Contact::display_contact(void)
 {
 	std::cout << "First name : " << _first_name << std::endl;
 	std::cout << "Last name : " << _last_name << std::endl;
-	std::cout << "Nickname " <<_nickname << std::endl;
+	std::cout << "Nickname : " <<_nickname << std::endl;
 	std::cout << "Phone number : " << _phone_number << std::endl;
 	std::cout << "Darkest secret : " << _secret << std::endl;
 }
