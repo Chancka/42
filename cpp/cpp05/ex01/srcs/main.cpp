@@ -2,8 +2,8 @@
 
 int main(void)
 {
-	Bureaucrat		bob1("Bob", 1);
-	Bureaucrat		bob2("Bob", 2);
+	Bureaucrat		bob1("Bob1", 1);
+	Bureaucrat		bob2("Bob2", 2);
 	Form			form1("Form1", 1, 1);
 	try
 	{
@@ -32,41 +32,9 @@ int main(void)
 	{
 		std::cout << e.what() << std::endl;
 	}
-	try
-	{
-		std::cout << "ALLO" << form1;
-		form1.beSigned(bob1);
-	}
-	catch (std::exception & e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	try
-	{
-		bob1.signForm(form1);
-		std::cout << form1;
-	}
-	catch (std::exception & e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	try
-	{
-		std::cout << form1;
-		form1.beSigned(bob2);
-	}
-	catch (std::exception & e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	try
-	{
-		std::cout << form1;
-		bob2.signForm(form1);
-	}
-	catch (std::exception & e)
-	{
-		std::cout << e.what() << std::endl;
-	}
+	std::cout << form1;
+	bob1.signForm(form1); // bob1 grade is 1, form1 grade is 1
+	std::cout << form1;
+	bob2.signForm(form1); // bob2 grade is too low
 	return (0);
 }

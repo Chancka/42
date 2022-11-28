@@ -14,7 +14,7 @@ Brain::Brain(const Brain &other)
 Brain &Brain::operator=(const Brain &other)
 {
 	std::cout << "Assignation constructor called for Brain" << std::endl;
-	for(int i; i < this->_nb_idea; i++)
+	for(int i = 0; i < this->_nb_idea; i++)
 		this->ideas[i] = other.ideas[i];
 	return (*this);
 }

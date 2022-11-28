@@ -16,5 +16,9 @@ int main(void)
 	scf = someRandomIntern.makeForm("shrubbery creation", "Bender");
 	std::cout << *scf << std::endl;
 
+	delete rrf;
+	delete ppf;
+	delete scf;
+
 	return (0);
 }

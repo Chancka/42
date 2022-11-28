@@ -18,6 +18,7 @@ int main()
 		std::cout << animals[i]->getType() << std::endl;
 	}
 
+
 	for (int i = 0; i < NB_ANIMAL; i++)
 		std::cout << i << " " << animals[i]->getType() << std::endl;
 

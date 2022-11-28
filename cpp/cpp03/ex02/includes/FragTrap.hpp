@@ -5,7 +5,7 @@
 #include <string>
 #include "ScavTrap.hpp"
 
-class FragTrap : public ScavTrap
+class FragTrap : public ClapTrap
 {
 	public:
 
@@ -15,8 +15,8 @@ class FragTrap : public ScavTrap
 	FragTrap &operator=(const FragTrap &other);
 	~FragTrap();
 
-	void	highFivesGuys(void);
-
+	void	highFivesGuys();
+	
 	private:
 
 	

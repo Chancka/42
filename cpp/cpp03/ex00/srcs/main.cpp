@@ -21,7 +21,7 @@ int main(void)
 
 	ClapTrap	chancka_default;
 
-	for (int i; i < 11; i++)
+	for (int i = 0; i < 11; i++)
 		chancka_default.attack("ennemy");
 	chancka_default.beRepaired(1);
 	return (0);	

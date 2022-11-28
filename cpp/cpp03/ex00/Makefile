@@ -2,7 +2,7 @@ NAME		= ClapTrap
 
 SRCS		= srcs/main.cpp srcs/ClapTrap.cpp
 
-OBJS		= ${SRCS:.cpp=.o}
+OBJS		= ${SRCS:%.cpp=%.o}
 
 RM			= rm -f
 
@@ -12,6 +12,9 @@ COMPILER	= c++
 
 ${NAME}:	${OBJS}
 		${COMPILER} ${CPPFLAGS} ${OBJS} -o ${NAME}
+
+%.o:		%.cpp
+		${COMPILER} ${CPPFLAGS} -c $< -o $@
 
 all:	${NAME}
 

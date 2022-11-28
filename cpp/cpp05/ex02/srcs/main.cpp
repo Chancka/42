@@ -60,5 +60,9 @@ int main(void)
 	delete bur2;
 	delete bur3;
 
+	delete form1;
+	delete form2;
+	delete form3;
+
 	return (0);
 }
