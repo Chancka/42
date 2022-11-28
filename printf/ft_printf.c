@@ -6,13 +6,14 @@
 /*   By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 20:46:16 by cboudrin          #+#    #+#             */
-/*   Updated: 2022/01/07 14:37:06 by cboudrin         ###   ########.fr       */
+/*   Updated: 2022/11/22 15:48:05 by cboudrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 #include <string.h>
+#include <limits.h>
 
 t_ptrfonction	dispatch(char c)
 {
@@ -59,8 +60,3 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
-
-// int	main()
-// {
-// 	ft_printf("blabla %% oui");
-// }

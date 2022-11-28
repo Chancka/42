@@ -6,7 +6,7 @@
 #    By: cboudrin <cboudrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/24 09:36:39 by cboudrin          #+#    #+#              #
-#    Updated: 2021/11/29 16:15:59 by cboudrin         ###   ########.fr        #
+#    Updated: 2022/11/18 10:37:23 by cboudrin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,7 +79,7 @@ clean:
 			rm -f ${OBJS}
 
 fclean:		clean
-			rm -f ${NAME}
+			rm -f ${NAME} ${BONUS_O}
 
 re:			fclean all
 
