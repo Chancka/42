@@ -57,6 +57,8 @@ void Span::addRange(int start, int end)
 
 void Span::addRandomRange(int start, int end, int n)
 {
+	srand(time(NULL));
+
 	if (start > end)
 		throw std::exception();
 	for (int i = 0; i < n; i++)

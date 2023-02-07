@@ -5,7 +5,10 @@
 
 Base* generate(void)
 {
+	srand(time(NULL));
+
 	int i = rand() % 3;
+	
 	if (i == 0)
 	{
 		std::cout << "A" << std::endl;

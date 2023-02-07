@@ -12,12 +12,26 @@ int main()
 	std::cout << sp.longestSpan() << std::endl;
 	
 	Span sp2 = Span(10000);
-	sp2.addRange(0, 9999);
+	try
+	{
+		sp2.addRange(0, 999);
+	}
+	catch (std::exception & e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 	std::cout << sp2.shortestSpan() << std::endl;
 	std::cout << sp2.longestSpan() << std::endl;
 
-	Span sp3 = Span(1000000);
-	sp3.addRandomRange(0, 99999, 10000);
+	Span sp3 = Span(6000);
+	try
+	{
+		sp3.addRandomRange(0, 999, 99);
+	}
+	catch (std::exception & e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 	std::cout << sp3.shortestSpan() << std::endl;
 	std::cout << sp3.longestSpan() << std::endl;
 

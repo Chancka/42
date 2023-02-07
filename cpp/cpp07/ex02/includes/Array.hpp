@@ -11,7 +11,8 @@ class Array
 		unsigned int	_size;
 	public:
 
-	Array<T>() : _array(NULL), _size(0) {}
+	Array() : _array(NULL), _size(0) {}
+	// Array<T>() : _array(NULL), _size(0) {}
 	Array<T>(unsigned int n) : _array(new T[n]), _size(n) {}
 	Array<T>(Array const &src) : _array(new T[src._size]), _size(src._size)
 	{

@@ -90,14 +90,15 @@ std::string Type::getString() const
 
 void    Type::printChar() const
 {
+	std::cout << "char: ";
 	if (this->_s.find('.') != std::string::npos && this->_s[this->_s.length() - 1] == 'f')
-		std::cout << "char: '*'" << std::endl;
+		std::cout << "'*'" << std::endl;
 	else if (this->_s.find("nan") != std::string::npos || this->_s.find("inf") != std::string::npos)
-		std::cout << "char: impossible" << std::endl;
+		std::cout << "impossible" << std::endl;
 	else if (this->_s.length() == 1 && isprint(this->_c) && !isdigit(this->_c))
-		std::cout << "char: '" << this->_s << "'" << std::endl;
+		std::cout << "'" << this->_s << "'" << std::endl;
 	else
-		std::cout << "char: Non displayable" << std::endl;
+		std::cout << "Non displayable" << std::endl;
 }
 
 void    Type::printInt() const

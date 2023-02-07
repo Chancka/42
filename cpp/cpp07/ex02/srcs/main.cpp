@@ -2,10 +2,11 @@
 
 int	main()
 {
-	Array<int>	*array = new Array<int>(5);
+	Array<int>	*array = new Array<int>(10);
 	Array<int>	*array2 = new Array<int>(*array);
 	Array<int>	*array3 = new Array<int>(10);
 	Array<char>	*array4 = new Array<char>(10);
+	Array<int>	*array5 = new Array<int>();
 
 	for (unsigned int i = 0; i < array->size(); i++)
 		(*array)[i] = i;
@@ -40,10 +41,12 @@ int	main()
 	std::cout << "array2 size: " << array2->size() << std::endl;
 	std::cout << "array3 size: " << array3->size() << std::endl;
 	std::cout << "array4 size: " << array4->size() << std::endl;
+	std::cout << "array5 size: " << array5->size() << std::endl;
 
 	delete array;
 	delete array2;
 	delete array3;
 	delete array4;
+	delete array5;
 	return (0);
 }
